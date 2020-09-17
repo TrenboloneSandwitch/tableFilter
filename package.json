@@ -5,6 +5,8 @@
   "main": "src/App.js",
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.20",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
