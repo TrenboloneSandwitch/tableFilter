@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Router } from "@reach/router";
-import data from "./store/data.json";
-import getJSON from "./services/api.service";
-
+import { TableDataProvider } from "./context/TableDataContext";
 import Footer from "./components/Footer";
+import Filters from "./components/Filters";
+import Table from "./components/common/Table";
+import "font-awesome/css/font-awesome.min.css";
 
 const App = () => {
-  const [state, setstate] = useState(null);
-  useEffect(() => {}, []);
   return (
-    <React.Fragment>
-      <h1>Tu kabel</h1>
-      <h2>HUHU</h2>
-    </React.Fragment>
+    <TableDataProvider>
+      <h1>Table</h1>
+      <Table />
+      <Footer />
+    </TableDataProvider>
   );
 };
 
