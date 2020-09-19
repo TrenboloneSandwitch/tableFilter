@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import _ from "lodash";
 
 import { TableDataContext } from "../../context/TableDataContext";
@@ -8,8 +8,21 @@ import TableBody from "./TableBody";
 
 const Table = () => {
   const { state } = useContext(TableDataContext);
+  const { items, sortColumn, columns } = state;
 
-  const { items, sortColumn } = state;
+  const [activeColumns, setActiveColumns] = useState([]);
+
+  useEffect(() => {
+    getActiveColumns();
+  }, [columns]);
+
+  const getActiveColumns = () => {
+    const newActiveColumns = columns
+      .filter((item) => item.isShown)
+      .map((item) => item.colName);
+
+    setActiveColumns(newActiveColumns);
+  };
 
   const getFiltredData = () => {
     let filtredData = items;
@@ -20,11 +33,13 @@ const Table = () => {
   };
 
   return (
-    <div className="table-responsive">
+    <div className="table-responsive pl-4 pr-4">
+      {activeColumns.length == 0 && <h3>No column is selected</h3>}
+
       {getFiltredData() && (
         <table className="table">
-          <TableHeader />
-          <TableBody data={getFiltredData()} />
+          <TableHeader columns={activeColumns} />
+          <TableBody data={getFiltredData()} columns={activeColumns} />
         </table>
       )}
     </div>

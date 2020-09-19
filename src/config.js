@@ -6,23 +6,22 @@ export const initialState = {
     path: "id",
     order: "asc",
   },
-  activeColumns: [
-    "id",
-    "name",
-    "campaign_name",
-    "adgroup_name",
-    "created_at",
-    "updated_at",
-    "type",
-    "adwords_status",
-    "items_count",
+
+  columns: [
+    { colName: "id", isShown: true },
+    { colName: "name", isShown: true },
+    { colName: "campaign_name", isShown: false },
+    { colName: "adgroup_name", isShown: false },
+    { colName: "created_at", isShown: true },
+    { colName: "updated_at", isShown: true },
+    { colName: "type", isShown: false },
+    { colName: "adwords_status", isShown: false },
+    { colName: "items_count", isShown: true },
   ],
 };
 
 export const reducerVars = {
   SORT: "SORT",
-  GET_ALL: "GET_ALL",
-  FILTER_DATA: "FILTER_DATA",
-  RESPONSE_COMPLETE: "RESPONSE_COMPLETE",
-  ERROR: "ERROR",
+  TOGGLE_FILTER: "TOGGLE_FILTER",
+  INPUT_CHANGE: "INPUT_CHANGE",
 };

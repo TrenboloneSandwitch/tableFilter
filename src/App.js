@@ -10,7 +10,13 @@ import "font-awesome/css/font-awesome.min.css";
 const App = () => {
   return (
     <TableDataProvider>
-      <h1>Table</h1>
+      <h1
+        className="d-flex justify-content-center p-5 bg-dark text-white"
+        style={{ margin: "0", fontWeight: 100 }}
+      >
+        The Table Filter
+      </h1>
+      <Filters />
       <Table />
       <Footer />
     </TableDataProvider>

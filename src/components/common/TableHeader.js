@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { TableDataContext } from "../../context/TableDataContext";
 
-const TableHeader = () => {
+const TableHeader = ({ columns }) => {
   const { state, onSort } = useContext(TableDataContext);
-  const { activeColumns, sortColumn } = state;
+  const { sortColumn } = state;
 
   const raiseSort = (path) => {
     if (sortColumn.path === path) {
@@ -27,17 +27,16 @@ const TableHeader = () => {
   return (
     <thead>
       <tr>
-        {activeColumns.map((column) => {
-          return column.unSortable ? (
-            <th key={column}>{column}</th>
-          ) : (
+        {columns.map((column) => {
+          return (
             <th
+              style={{ textTransform: "capitalize", fontWeight: 500 }}
               className="clickable"
               key={column}
               onClick={() => raiseSort(column)}
             >
               {" "}
-              {column} {renderSortIcon(column)}
+              {column.replace("_", " ")} {renderSortIcon(column)}
             </th>
           );
         })}
